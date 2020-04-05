@@ -1,0 +1,65 @@
+/Description: The program allows the user to input 8 numbers and 
+/finds the smallest and the largest. Then prints the smallest number and 
+/the largest number. Numbers are limited to integers, and can be positive, 
+/negative, or zero. It doesn't prompt for input, but prints output.
+
+	ORG 100		  
+	Load	 Addr	/Load address of first number to be compared		
+	Store	Next	/Store this address is our Next pointer		
+	Load 	Num	 /Load the number of items to be compared		
+	Subt	 One	 /Decrement 		
+	Store	Num	 /Store this value in Num (counter)		
+if,     Load	 Stor	/Load Lrg number
+	Clear	Stor	/Clear Stor number
+	AddI	 Next	/AddI Next number to Stor
+	Store	Stor	/Store Stor number
+	Load	 Lrg	 /Load Lrg number
+	Subt	 Stor	/Subt by Stor
+	Skipcond     000	 /Skipcond if AC < 0
+	Jump	 if2	 /Jump to two
+	Load	 Lrg	 /Load Lmg number
+	Clear	Lrg	 /Clear Lmg, set to 0
+	AddI	 Next	/AddI Next number
+	Store	Lrg	 /Store in Lrg
+if2,    Load	 Stor	/Load the Sml number
+	Clear	Stor	/Clear Stor
+	AddI	 Next	/AddI Next number
+	Store	Stor	/Store Stor number
+	Load	 Sml	 /Load Sml number
+	Subt	 Stor	/Subt Stor number
+	Skipcond     800	 /Skipcond if AC > 0
+	Jump	 Nv	  /Jump to Nv
+	Load	 Sml	 /Load Sml number
+	Clear	Sml	 /Clear Sml, set to 0
+	AddI	 Next	/AddI Next value
+	Store	Sml	 /Store in Sml
+Nv,     Load	 Next	/Load first number
+	Add	  One	 /Add one
+	Store	Next	/Store in Next
+	Load	 Num	 /Load Num number
+	Subt	 One	 /Subt by One
+	Skipcond     800	 /Skipcond if AC > 0
+	Jump	 Edp	 /Jump to Edp, to output and halt
+	Store	Num	 /Store Num number
+	Jump	 if	  /Jump to if
+Edp,    Load	 130	 /Load Lrg number
+	OUTPUT          	 /Output Lmg number
+	Load	 12F	 /Load Sml number
+	OUTPUT          	 /Output Sml number
+	Halt		     /Halt program
+Addr,   Hex	  132         /Numbers to be compared start at location 118		
+Next,   Hex	  0	   /A pointer to the next number to compare		
+Num,    Dec	  8	   /The number of values inputed
+Stor,   Dec	  0	   /Stores a number 		
+Sml,    Dec	  100	 /The smallest value
+Lrg,    Dec	  0	   /The largest value		
+One,    Dec	  1	   /Used to increment and decrement by 1		
+	Dec	  3           /The values to be compared		
+        Dec	  -6
+        Dec	  21
+        Dec	  5
+        Dec	  8
+	Dec	  0
+	Dec	  14
+	Dec	  6		
+	END
