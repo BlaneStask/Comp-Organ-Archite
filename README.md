@@ -5,7 +5,7 @@ In this course we worked on Data representation, digital logic, instruction set/
 
 ## loop_ex
 
-For example, here is the MARIE program for a loop:
+For example, here is the MARIE program snippet for a loop:
 ```
   Loop,   Load 	 Sum	 /Load the Sum into AC		
 	  AddI	 Next	 /Add the value pointed to by location Next		
