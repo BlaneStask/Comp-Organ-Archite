@@ -1,6 +1,6 @@
-/Description: The program allows the user to input 8 numbers and 
-/finds the smallest and the largest. Then prints the smallest number and 
-/the largest number. Numbers are limited to integers, and can be positive, 
+/Description: The program finds the smallest and the largest. 
+/Then prints the smallest number and the largest number. 
+/Numbers are limited to integers, and can be positive, 
 /negative, or zero. It doesn't prompt for input, but prints output.
 
 	ORG 100		  
